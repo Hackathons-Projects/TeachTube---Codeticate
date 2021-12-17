@@ -17,7 +17,13 @@
 
         <activity
             android:name="com.hackathon.teachtube.Security.LoginActivity"
-            android:screenOrientation="unspecified" />
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.hackathon.teachtube.Security.RegisterActivity"
             android:screenOrientation="unspecified" />
@@ -25,11 +31,7 @@
         <activity
             android:name="com.hackathon.teachtube.Activities.MainActivity"
             android:screenOrientation="unspecified">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
