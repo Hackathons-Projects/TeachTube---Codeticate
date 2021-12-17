@@ -143,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (check == 0) {
                     Log.d(TAG, "where: 6");
 
-                    //verifyMobileNo(mMobileNo , mEmail, mContactPerson, mCACode , findViewById(R.id.rootView));
+                    verifyMobileNo(mMobileNo , mEmail, mContactPerson, mCACode , findViewById(R.id.rootView));
                 }
             }
         });
