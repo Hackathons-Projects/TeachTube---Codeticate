@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#881fff</color>
+    <color name="white">#ffffff</color>
+    <color name="colorDark">#333333</color>
+
+    <color name="colorSecondary">#F95738</color>
+
+    <color name="PurpleColor">#00499C</color>
+    <color name="OrangeColor">#F96900</color>
+    <color name="YellowColor">#EECB22</color>
+    <color name="TrapeziumColor">#0591f0</color>
+
+    <color name="PresentColor">#19A448</color>
+    <color name="AbsentColor">#b00020</color>
+    <color name="HalfdayColor">#007BFF</color>
+    <color name="HolidayColor">#EECB22</color>
+    <color name="ErrorMsg">#b00020</color>
+
+    <color name="textColorLight">#999898</color>
+    <color name="textColorMedium">#625F5F</color>
+    <color name="textColorMediumDark">#3A3939</color>
+    <color name="textColorDark">#333333</color>
+    <color name="BrownColor">#581C0F</color>
+    <color name="LightGreen">#facfd4</color>
+    <color name="outlineGreyColor">#afafaf</color>
+
+    <color name="lightDark">#33333333</color>
+
+    <color name="LightBlue">#DEEEFF</color>
+    <color name="MediumBlue">#69B0FF</color>
+    <color name="MediumLightBlue">#A9D1FF</color>
+
+    <color name="popup_spinner_bg">#facfd4</color>
+
+    <color name="colorPrimaryDark">#4700FF</color>
+    <color name="colorAccent">#FF0000</color>
+    <color name="GreenColor">#0D9B3F</color>
+    <color name="TransparentGreenColor">#294D36</color>
+    <color name="lightGray">#D6D6D6</color>
+    <color name="lightGrayBackground">#EBEBEB</color>
+    <color name="ExtralightGrayBackground">#F1F1F1</color>
+
+    <color name="numberKeyboard_default">#F8F8F8</color>
+    <color name="numberKeyboard_clicked">#D8D8D8</color>
+    <color name="fading_bg_color">#AF68FF</color>
+
+</resources>

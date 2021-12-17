@@ -1,0 +1,121 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimaryDark">@color/textColorDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextAppearance">@style/MainToolbarTextAppearance</item>
+
+        <!--<item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>
+        <item name="materialCalendarFullscreenTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen</item>
+        <item name="materialCalendarTheme">@style/ThemeOverlay.MaterialComponents.MaterialCalendar</item>
+        <item name="colorSurface">@color/white</item>-->
+
+    </style>
+
+    <style name="ScrollingPagerIndicator">
+        <item name="spi_dotColor">@android:color/darker_gray</item>
+        <item name="spi_dotSelectedColor">@android:color/darker_gray</item>
+        <item name="spi_dotSize">6dp</item>
+        <item name="spi_dotSelectedSize">10dp</item>
+        <item name="spi_dotSpacing">8dp</item>
+        <item name="spi_visibleDotCount">5</item>
+        <item name="spi_visibleDotThreshold">2</item>
+        <item name="spi_looped">false</item>
+    </style>
+
+    <style name="AboveKeyboardDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="CustomisedTransparentToolbarStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="NavigationView"  parent="Base.Theme.AppCompat">
+        <item name="android:listDivider">@color/lightGray</item>
+    </style>
+
+    <style name="FontRegular">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+    <style name="NumbersFont">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+    <style name="FontMedium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+    <style name="FontSemiBold">
+        <item name="android:fontFamily">@font/manrope_semi_bold</item>
+    </style>
+    <style name="FontBold">
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+    <style name="FontDark">
+        <item name="android:fontFamily">@font/manrope_extra_bold</item>
+    </style>
+    <style name="TabTextAppearance" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/red_hat_display_medium</item>
+    </style>
+    <style name="CustomTabTextAppearance" parent="@android:style/TextAppearance.Medium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+    <style name="MainToolbarTextAppearance">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_17ssp</item>
+        <item name="android:gravity">top</item>
+    </style>
+    <style name="MainToolbarSubTextAppearance">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <style name="MyDialogFadeAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+    <style name="progressBarTheme" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="TextInputLayoutAppearance" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorControlHighlight">@color/AbsentColor</item>
+        <item name="colorControlNormal">@color/AbsentColor</item>
+        <item name="colorControlActivated">@color/AbsentColor</item>-->
+
+        <item name="colorOnSurface">@color/lightGray</item>
+    </style>
+
+    <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/textSize_small</item>
+        <item name="android:fontFamily">@font/manrope_bold</item>
+    </style>
+
+    <style name="chipTextAppearanceMedium" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/textSize_littleSmall</item>
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+</resources>

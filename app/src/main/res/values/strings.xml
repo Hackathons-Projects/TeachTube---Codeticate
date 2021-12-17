@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">CountX</string>
+    <string name="real_app_name">CountX</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="alphanum_min_slash">ABCDEFGHIJKLMNOPQRSTUVWXYZabcgefghijklmnopkurstuvwxyz1234567890-/</string>
+
+    <string name="numeric">1234567890</string>
+
+    <string name="alphanum">ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+
+    <string name="alphanumeric">ABCDEFGHIJKLMNOPQRSTUVWXYZabcgefghijklmnopkurstuvwxyz1234567890 </string>
+
+    <string name="alphabetic">ABCDEFGHIJKLMNOPQRSTUVWXYZabcgefghijklmnopkurstuvwxyz </string>
+
+    <dimen name="textSize_littleSmall">@dimen/_10ssp</dimen>
+    <dimen name="textSize_small">@dimen/_13ssp</dimen>
+    <dimen name="textSize_medium">@dimen/_15ssp</dimen>
+    <dimen name="textSize_large">@dimen/_17ssp</dimen>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="dummyText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="sez_info">Special Economic Zone is an area in which the business and trade laws are different from the rest of the country.</string>
+
+</resources>
