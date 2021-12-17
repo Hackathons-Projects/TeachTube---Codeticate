@@ -1,5 +1,6 @@
 package com.hackathon.teachtube.Security;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -14,17 +15,25 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hackathon.teachtube.Classes.MobileVerification;
 import com.hackathon.teachtube.R;
 import com.hackathon.teachtube.Utils.AllKeyUrls;
+import com.hackathon.teachtube.Utils.AuthEncrypter;
+import com.hackathon.teachtube.Utils.Constants;
 import com.hackathon.teachtube.Utils.ImpMethods;
 import com.hackathon.teachtube.Utils.TinyDB;
 
@@ -33,7 +42,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -51,12 +59,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     private MobileVerification mobileVerification;
 
+    FirebaseDatabase firebaseDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         context = RegisterActivity.this;
         mobileVerification = new MobileVerification(context, findViewById(R.id.rootView));
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
@@ -145,70 +157,53 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    /*private void registerUser(String mobileNo, String email, String contactPerson, String caCode, View view) {
+    private void registerUser(String mobileNo, String email, String contactPerson, String caCode, View view) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setMessage("Registering...");
         dialog.show();
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AllKeyUrls.getGetRegisterUser(),
 
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
+        String encryptedData = AuthEncrypter.Encrypt(mobileNo);
+        Map<String, Object> data = new HashMap<>();
+        data.put(Constants.USER_NAME, contactPerson);
+        data.put(Constants.USER_EMAIL, email);
+        data.put(Constants.USER_MOBILE_NO, encryptedData);
 
-                            JSONObject jsonObject = new JSONObject(response);
-
-                            if (jsonObject.getString("status").equals("1")) {
-                                TinyDB tinyDB = new TinyDB(context);
-                                //tinyDB.putString(DataSharedManager.GSTIN, gstNo);
-
-                                Intent intent = new Intent(context, LoginActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
-                                Toast.makeText(context, "User Registered !!", Toast.LENGTH_SHORT).show();
-
-                                dialog.dismiss();
-                            } else {
-                                dialog.dismiss();
-                                ImpMethods.showErrorSnackbar(context, view, "Mobile No. already Registered");
-                            }
-
-                        } catch (JSONException e) {
-                            dialog.dismiss();
-                            e.printStackTrace();
-                            Log.d(TAG, e.toString());
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
-                        Log.d(TAG, "onErrorResponse: " + error.toString());
-                        ImpMethods.showErrorSnackbar(context, view, "Network Problem !!\nPlease try again later");
-                    }
-                }
-        ) {
+        firebaseDatabase.getReference("Users").child(encryptedData).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("contact_person", contactPerson);
-                params.put("email", email);
-                params.put("ca_code", caCode);
-                params.put("mobile", mobileNo);
-                return params;
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(context, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+
+                }
+                dialog.dismiss();
             }
-        };
-        requestQueue.add(stringRequest);
+        }).addOnCanceledListener(new OnCanceledListener() {
+            @Override
+            public void onCanceled() {
+                dialog.dismiss();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                dialog.dismiss();
+                Snackbar.make(ImpMethods.getViewFromContext(context), "Network Problem! Please try again.", Snackbar.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
-    private void verifyMobileNo(String phone_no ,String email, String contactPerson, String caCode, View view) {
+    private int otpVerifiedFlag = 0;
+    private String previousSuccessfulNo = "";
+
+    private void verifyMobileNo(String phone_no, String email, String contactPerson, String caCode, View view) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setMessage("Verifying...");
         dialog.show();
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        /*RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AllKeyUrls.getGetSigninMobileNo(phone_no),
 
                 new Response.Listener<String>() {
@@ -300,9 +295,71 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }
         );
-        requestQueue.add(stringRequest);
-    }*/
-    
+        requestQueue.add(stringRequest);*/
 
+        String decryptedData = AuthEncrypter.Encrypt(phone_no);
+        firebaseDatabase.getReference("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    mobileVerification.verifyOtpDialog(phone_no);
+                    mobileVerification.addOnMobileVerificationFinished(new MobileVerification.OnMobileVerificationFinished() {
+                        @Override
+                        public void MobileVerificationFinished(int errorCode, boolean success, String mobileNo) {
+                            previousSuccessfulNo = mobileNo;
+                            if (success) {
+                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
+
+                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconDrawable(R.drawable.correct);
+                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconVisible(true);
+
+                                registerUser(mobileNo, email, contactPerson, caCode, view);
+
+                                //btn_verify_mobile.setEnabled(false);
+                                //et_mobileNo.setEnabled(false);
+                                //btn_verify_mobile.setImageResource(R.drawable.ic_edit);
+                                //btn_verify_mobile.setTag(R.drawable.ic_edit);
+                                otpVerifiedFlag = 1;
+                            } else {
+                                otpVerifiedFlag = 0;
+                                switch (errorCode) {
+                                    case MobileVerification.OTP_DIALOG_CLOSED:
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Verification Required");
+                                        break;
+                                    case MobileVerification.OTP_SENT_LIMIT_END:
+                                        //tooManyRequestFlag = 1;
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Too Many Failed Attempts.\nTry again Later!");
+                                        //btn_verify_mobile.setEnabled(false);
+                                        break;
+                                    case MobileVerification.OTP_VERIFICATION_FAILED:
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconActivated(false);
+                                        break;
+                                    case MobileVerification.INVALID_MOBILE_NO:
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Invalid Mobile No.");
+                                        break;
+                                    case MobileVerification.OTP_VERIFICATION_FAILURE:
+                                        break;
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        }).addOnCanceledListener(new OnCanceledListener() {
+            @Override
+            public void onCanceled() {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+    }
 
 }
