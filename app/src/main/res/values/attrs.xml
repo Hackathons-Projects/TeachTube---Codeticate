@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomViewTrapezium">
+
+        <attr name="height_left" format="dimension"/>
+        <attr name="height_right" format="dimension"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="CustomViewCircle">
+
+        <attr name="circle_size" format="dimension"/>
+        <attr name="circle_color" format="color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="CustomNumberKeyboard">
+
+        <attr name="fab_size" format="dimension"/>
+        <attr name="fab_backgroundColor" format="reference"/>
+        <attr name="fab_rippleColor" format="reference"/>
+        <!--<attr name="fab_margin" format="dimension"/>
+        <attr name="fab_marginBetween" format="dimension"/>-->
+        <attr name="fab_leftAuxBackgroundColor" format="reference"/>
+        <attr name="fab_RightAuxBackgroundColor" format="reference"/>
+        <attr  name="fab_leftAuxSrcColor" format="reference"/>
+        <attr name="fab_RightAuxSrcColor" format="reference"/>
+        <attr name="fab_numberColor" format="reference"/>
+        <attr name ="fab_leftAuxSrc" format="reference"/>
+        <attr name="fab_RightAuxSrc" format="reference"/>
+        <attr name="fab_RightAuxEnabled" format="boolean"/>
+        <attr name="fab_LeftAuxEnabled" format="boolean"/>
+        <!--<attr name="numberSize" format="dimension"/>
+        <attr name ="fab_leftAuxSrcSize" format="dimension"/>
+        <attr name="fab_RightAuxSrcSize" format="dimension"/>-->
+
+    </declare-styleable>
+
+    <attr name="scrollingPagerIndicatorStyle"/>
+
+    <declare-styleable name="ScrollingPagerIndicator">
+        <attr name="spi_dotColor" format="color" />
+        <attr name="spi_dotSelectedColor" format="color" />
+        <attr name="spi_dotSize" format="dimension" />
+        <attr name="spi_dotSelectedSize" format="dimension" />
+        <attr name="spi_dotMinimumSize" format="dimension" />
+        <attr name="spi_dotSpacing" format="dimension" />
+        <attr name="spi_visibleDotCount" format="integer" />
+        <attr name="spi_visibleDotThreshold" format="integer" />
+        <attr name="spi_looped" format="boolean" />
+        <attr name="spi_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

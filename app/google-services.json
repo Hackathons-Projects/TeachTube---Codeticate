@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "838734751536",
+    "project_id": "teachtube-335415",
+    "storage_bucket": "teachtube-335415.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838734751536:android:c50c120ae79171b3194af5",
+        "android_client_info": {
+          "package_name": "com.hackathon.teachtube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838734751536-utbqgcfiltlr81cbl6hbhmlgahk19puf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.teachtube",
+            "certificate_hash": "ab27384c955b34d23b2ee3dad9934d9d27cd1b31"
+          }
+        },
+        {
+          "client_id": "838734751536-791omdh7dbq7trst9jf2mme6pu5f5j6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuZm0_jP-m2ggWkm8zgG_025GUPbJ8lAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838734751536-791omdh7dbq7trst9jf2mme6pu5f5j6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

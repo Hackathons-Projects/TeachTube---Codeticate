@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LL_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ExtralightGrayBackground"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/_16sdp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/main_background"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_124sdp"
+                android:paddingBottom="@dimen/_20sdp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginEnd="30dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_8sdp"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_10sdp">
+
+                            <TextView
+                                style="@style/FontMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_18sdp"
+                                android:text="SIGN-IN"
+                                android:textColor="@color/colorDark"
+                                android:textSize="@dimen/textSize_large" />
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_42sdp"
+                                android:layout_marginTop="@dimen/_26sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardElevation="0dp"
+                                app:cardCornerRadius="@dimen/_5sdp"
+                                app:strokeColor="@color/outlineGreyColor"
+                                app:strokeWidth="@dimen/_1sdp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:gravity="center">
+
+                                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                                        android:id="@+id/ccp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_4sdp"
+                                        android:visibility="visible" />
+
+                                    <View
+                                        android:layout_width="1dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="@dimen/_8sdp"
+                                        android:layout_marginEnd="@dimen/_7sdp"
+                                        android:layout_marginBottom="@dimen/_8sdp"
+                                        android:background="@color/outlineGreyColor" />
+
+                                    <EditText
+                                        android:id="@+id/et_phone_no"
+                                        style="@style/FontRegular"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@android:color/transparent"
+                                        android:hint="Mobile No."
+                                        android:inputType="phone"
+                                        android:textColor="@color/textColorMedium"
+                                        android:textSize="@dimen/textSize_medium" />
+
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/btn_submit_login"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginStart="@dimen/_26sdp"
+                                android:layout_marginTop="@dimen/_62sdp"
+                                android:layout_marginEnd="@dimen/_26sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                app:cardBackgroundColor="@color/textColorDark"
+                                app:rippleColor="@color/ExtralightGrayBackground"
+                                >
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/FontMedium"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:text="Submit"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/textSize_medium" />
+
+                                </RelativeLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:gravity="center"
+                        android:textColor="@color/textColorMediumDark"
+                        android:text="Haven't registered yet !"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/register_link"
+                        style="@style/FontMedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Register Now !!"
+                        android:padding="@dimen/_4sdp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_12ssp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+
+        <TextView
+            style="@style/FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Designed &amp; Developed for "
+            android:textColor="@color/textColorMediumDark"
+            android:textSize="@dimen/_11ssp" />
+
+        <TextView
+            style="@style/FontMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Codetivate"
+            android:textColor="@color/textColorDark"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+
+    <include layout="@layout/loader_layout" />
+
+</RelativeLayout>
