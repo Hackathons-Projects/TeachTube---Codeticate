@@ -79,7 +79,7 @@
                                         android:id="@+id/ccp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/_4sdp"
+                                        android:layout_marginStart="@dimen/_7sdp"
                                         android:visibility="visible" />
 
                                     <View

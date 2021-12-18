@@ -36,6 +36,7 @@ import com.hackathon.teachtube.Utils.AuthEncrypter;
 import com.hackathon.teachtube.Utils.Constants;
 import com.hackathon.teachtube.Utils.ImpMethods;
 import com.hackathon.teachtube.Utils.TinyDB;
+import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
     private MobileVerification mobileVerification;
 
     FirebaseDatabase firebaseDatabase;
+
+    private CountryCodePicker ccp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
         et_contact_person = findViewById(R.id.et_contactPerson);
         //btn_verify_mobile = findViewById(R.id.btn_verify_mobile);
         btn_submit = findViewById(R.id.btn_submit);
+
+        ccp = findViewById(R.id.ccp);
+        ccp.registerPhoneNumberTextView(et_mobileNo);
 
         verifyingOtpDialog = new ProgressDialog(context);
         verifyingOtpDialog.setMessage("Verifying...");
@@ -129,6 +135,8 @@ public class RegisterActivity extends AppCompatActivity {
                     ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Invalid Mobile No.");
                     ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
                     check++;
+                }else{
+                    mMobileNo = ccp.getSelectedCountryCodeWithPlus() + mMobileNo;
                 }
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(mEmail).matches()) {
@@ -309,7 +317,6 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void MobileVerificationFinished(int errorCode, boolean success, String mobileNo) {
                             previousSuccessfulNo = mobileNo;
-                            dialog.dismiss();
                             if (success) {
                                 ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
 
