@@ -22,7 +22,7 @@ public class AuthEncrypter {
             cipher = Cipher.getInstance("Blowfish");
             cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
             byte[] encrypted = cipher.doFinal(plain.getBytes());
-            return new String(Base64.encode(encrypted, Base64.DEFAULT)).replaceAll("[!@#$%^&*()_+=<>:;'/.,]", "").toUpperCase();
+            return new String(Base64.encode(encrypted, Base64.DEFAULT));
         } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | InvalidKeyException | NoSuchPaddingException e) {
             e.printStackTrace();
             return "";

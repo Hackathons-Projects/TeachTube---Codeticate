@@ -135,8 +135,6 @@ public class RegisterActivity extends AppCompatActivity {
                     ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Invalid Mobile No.");
                     ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
                     check++;
-                }else{
-                    mMobileNo = ccp.getSelectedCountryCodeWithPlus() + mMobileNo;
                 }
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(mEmail).matches()) {
@@ -169,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
-        String encryptedData = AuthEncrypter.Encrypt(mobileNo);
+        String encryptedData = AuthEncrypter.Encrypt(mobileNo).trim();
         Map<String, Object> data = new HashMap<>();
         data.put(Constants.USER_NAME, contactPerson);
         data.put(Constants.USER_EMAIL, email);
@@ -213,6 +211,10 @@ public class RegisterActivity extends AppCompatActivity {
         dialog.setMessage("Verifying...");
         dialog.setCancelable(false);
         dialog.show();
+        Log.d(TAG, "verifyMobileNo: " + phone_no);
+        Log.d(TAG, "verifyMobileNo: " + ccp.getSelectedCountryCodeWithPlus());
+        phone_no = ccp.getSelectedCountryCodeWithPlus() + phone_no;
+        Log.d(TAG, "verifyMobileNo: " + phone_no);
         /*RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AllKeyUrls.getGetSigninMobileNo(phone_no),
 
@@ -308,54 +310,63 @@ public class RegisterActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);*/
 
         String decryptedData = AuthEncrypter.Encrypt(phone_no).trim();
+        String finalPhone_no = phone_no;
         FirebaseDatabase.getInstance(Constants.FIREBASE_REFERENCE).getReference().child("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                dialog.dismiss();
+
                 if (task.isSuccessful()) {
-                    mobileVerification.verifyOtpDialog(phone_no);
-                    mobileVerification.addOnMobileVerificationFinished(new MobileVerification.OnMobileVerificationFinished() {
-                        @Override
-                        public void MobileVerificationFinished(int errorCode, boolean success, String mobileNo) {
-                            previousSuccessfulNo = mobileNo;
-                            if (success) {
-                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
+                    DataSnapshot snapshot = task.getResult();
+                    if (snapshot.exists()){
+                        Toast.makeText(context, "Mobile No. already registered!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        mobileVerification.verifyOtpDialog(finalPhone_no);
+                        mobileVerification.addOnMobileVerificationFinished(new MobileVerification.OnMobileVerificationFinished() {
+                            @Override
+                            public void MobileVerificationFinished(int errorCode, boolean success, String mobileNo) {
+                                previousSuccessfulNo = mobileNo;
+                                Log.d(TAG, "MobileVerificationFinished: " + mobileNo);
+                                if (success) {
+                                    ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
 
-                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconDrawable(R.drawable.correct);
-                                ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconVisible(true);
+                                    ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconDrawable(R.drawable.correct);
+                                    ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconVisible(true);
 
-                                registerUser(mobileNo, email, contactPerson, view);
+                                    registerUser(mobileNo, email, contactPerson, view);
 
-                                //btn_verify_mobile.setEnabled(false);
-                                //et_mobileNo.setEnabled(false);
-                                //btn_verify_mobile.setImageResource(R.drawable.ic_edit);
-                                //btn_verify_mobile.setTag(R.drawable.ic_edit);
-                                otpVerifiedFlag = 1;
-                            } else {
-                                otpVerifiedFlag = 0;
-                                switch (errorCode) {
-                                    case MobileVerification.OTP_DIALOG_CLOSED:
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Verification Required");
-                                        break;
-                                    case MobileVerification.OTP_SENT_LIMIT_END:
-                                        //tooManyRequestFlag = 1;
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Too Many Failed Attempts.\nTry again Later!");
-                                        //btn_verify_mobile.setEnabled(false);
-                                        break;
-                                    case MobileVerification.OTP_VERIFICATION_FAILED:
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconActivated(false);
-                                        break;
-                                    case MobileVerification.INVALID_MOBILE_NO:
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
-                                        ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Invalid Mobile No.");
-                                        break;
-                                    case MobileVerification.OTP_VERIFICATION_FAILURE:
-                                        break;
+                                    //btn_verify_mobile.setEnabled(false);
+                                    //et_mobileNo.setEnabled(false);
+                                    //btn_verify_mobile.setImageResource(R.drawable.ic_edit);
+                                    //btn_verify_mobile.setTag(R.drawable.ic_edit);
+                                    otpVerifiedFlag = 1;
+                                } else {
+                                    otpVerifiedFlag = 0;
+                                    switch (errorCode) {
+                                        case MobileVerification.OTP_DIALOG_CLOSED:
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Verification Required");
+                                            break;
+                                        case MobileVerification.OTP_SENT_LIMIT_END:
+                                            //tooManyRequestFlag = 1;
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Too Many Failed Attempts.\nTry again Later!");
+                                            //btn_verify_mobile.setEnabled(false);
+                                            break;
+                                        case MobileVerification.OTP_VERIFICATION_FAILED:
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconActivated(false);
+                                            break;
+                                        case MobileVerification.INVALID_MOBILE_NO:
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(true);
+                                            ((TextInputLayout) et_mobileNo.getParent().getParent()).setError("Invalid Mobile No.");
+                                            break;
+                                        case MobileVerification.OTP_VERIFICATION_FAILURE:
+                                            break;
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
         }).addOnCanceledListener(new OnCanceledListener() {

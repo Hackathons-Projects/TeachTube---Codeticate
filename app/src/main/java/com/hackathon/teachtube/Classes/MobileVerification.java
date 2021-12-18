@@ -99,6 +99,7 @@ public class MobileVerification
           So, have to solve that.
          */
 
+        phoneNo = mobileNo;
 
         code_sended_mobileNo.setText(phoneNo);
 

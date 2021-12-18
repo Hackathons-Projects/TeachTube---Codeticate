@@ -17,6 +17,7 @@
 
         <activity
             android:name="com.hackathon.teachtube.Security.LoginActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,10 +27,13 @@
         </activity>
         <activity
             android:name="com.hackathon.teachtube.Security.RegisterActivity"
-            android:screenOrientation="unspecified" />
+            android:screenOrientation="unspecified"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
 
         <activity
             android:name="com.hackathon.teachtube.Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="unspecified">
 
         </activity>
