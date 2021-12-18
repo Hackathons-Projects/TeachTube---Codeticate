@@ -3,26 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/drawable/back.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/drawable/correct.xml" value="0.18518518518518517" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/drawable/fading_background_white.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/drawable/ic_teachtube_logos.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/drawable/pinview_bg_actve.xml" value="0.18518518518518517" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/activity_main.xml" value="0.17083333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/customised_toolbar.xml" value="0.17083333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/fading_background_white.xml" value="0.1921875" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/main_background.xml" value="0.22" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/mobile_otp_verify.xml" value="0.1" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/layout/something_went_wrong.xml" value="0.1921875" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/menu/lectures_navigation.xml" value="0.15" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/menu/main_page_navigation_menu.xml" value="0.17083333333333334" />
-        <entry key="..\:/Projects/Hackathons/Education App/app/src/main/res/menu/navigation.xml" value="0.17083333333333334" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/main_background.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

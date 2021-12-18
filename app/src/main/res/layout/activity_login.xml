@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/main_background"/>
+            <include layout="@layout/main_background" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -17,6 +17,7 @@
             android:id="@+id/intro_screen_image"
             android:layout_width="@dimen/_124sdp"
             android:layout_height="@dimen/_124sdp"
+            android:layout_marginStart="@dimen/_minus12sdp"
             android:src="@drawable/ic_teachtube_logos" />
 
         <LinearLayout

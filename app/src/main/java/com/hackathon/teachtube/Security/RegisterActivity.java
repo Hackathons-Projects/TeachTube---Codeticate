@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
 
     private TextView login_link;
-    private TextInputEditText et_email, et_mobileNo, et_contact_person, et_CaCode; //et_gst_no
+    private TextInputEditText et_email, et_mobileNo, et_contact_person;//, et_CaCode; //et_gst_no
     private MaterialCardView btn_submit;
 
     private Toolbar toolbar;
@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         context = RegisterActivity.this;
         mobileVerification = new MobileVerification(context, findViewById(R.id.rootView));
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance(Constants.FIREBASE_REFERENCE);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String mEmail = et_email.getText().toString().trim();
                 String mMobileNo = et_mobileNo.getText().toString().trim();
                 String mContactPerson = et_contact_person.getText().toString().trim();
-                String mCACode = et_CaCode.getText().toString().trim();
+                //String mCACode = et_CaCode.getText().toString().trim();
 
                 String gstNoRegex = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$";
 
@@ -112,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 ((TextInputLayout) et_contact_person.getParent().getParent()).setErrorEnabled(false);
 
-                ((TextInputLayout) et_CaCode.getParent().getParent()).setErrorEnabled(false);
+                //((TextInputLayout) et_CaCode.getParent().getParent()).setErrorEnabled(false);
 
                 if (mContactPerson.equals("")) {
                     ((TextInputLayout) et_contact_person.getParent().getParent()).setError("Field Required");
@@ -143,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (check == 0) {
                     Log.d(TAG, "where: 6");
 
-                    verifyMobileNo(mMobileNo , mEmail, mContactPerson, mCACode , findViewById(R.id.rootView));
+                    verifyMobileNo(mMobileNo , mEmail, mContactPerson , findViewById(R.id.rootView));
                 }
             }
         });
@@ -157,9 +157,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void registerUser(String mobileNo, String email, String contactPerson, String caCode, View view) {
+    private void registerUser(String mobileNo, String email, String contactPerson, View view) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setMessage("Registering...");
+        dialog.setCancelable(false);
         dialog.show();
 
         String encryptedData = AuthEncrypter.Encrypt(mobileNo);
@@ -168,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity {
         data.put(Constants.USER_EMAIL, email);
         data.put(Constants.USER_MOBILE_NO, encryptedData);
 
-        firebaseDatabase.getReference("Users").child(encryptedData).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        firebaseDatabase.getReference().child("Users").child(encryptedData).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -185,11 +186,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onCanceled() {
                 dialog.dismiss();
+                Log.d(TAG, "onCanceled: ");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 dialog.dismiss();
+                Log.d(TAG, "onFailure: " + e.toString());
                 Snackbar.make(ImpMethods.getViewFromContext(context), "Network Problem! Please try again.", Snackbar.LENGTH_SHORT).show();
             }
         });
@@ -199,9 +202,10 @@ public class RegisterActivity extends AppCompatActivity {
     private int otpVerifiedFlag = 0;
     private String previousSuccessfulNo = "";
 
-    private void verifyMobileNo(String phone_no, String email, String contactPerson, String caCode, View view) {
+    private void verifyMobileNo(String phone_no, String email, String contactPerson, View view) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setMessage("Verifying...");
+        dialog.setCancelable(false);
         dialog.show();
         /*RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AllKeyUrls.getGetSigninMobileNo(phone_no),
@@ -298,7 +302,7 @@ public class RegisterActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);*/
 
         String decryptedData = AuthEncrypter.Encrypt(phone_no);
-        firebaseDatabase.getReference("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        firebaseDatabase.getReference().child("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -307,13 +311,14 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void MobileVerificationFinished(int errorCode, boolean success, String mobileNo) {
                             previousSuccessfulNo = mobileNo;
+                            dialog.dismiss();
                             if (success) {
                                 ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
 
                                 ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconDrawable(R.drawable.correct);
                                 ((TextInputLayout) et_mobileNo.getParent().getParent()).setEndIconVisible(true);
 
-                                registerUser(mobileNo, email, contactPerson, caCode, view);
+                                registerUser(mobileNo, email, contactPerson, view);
 
                                 //btn_verify_mobile.setEnabled(false);
                                 //et_mobileNo.setEnabled(false);
@@ -351,12 +356,14 @@ public class RegisterActivity extends AppCompatActivity {
         }).addOnCanceledListener(new OnCanceledListener() {
             @Override
             public void onCanceled() {
-
+                dialog.dismiss();
+                Log.d(TAG, "onCanceled: ");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                dialog.dismiss();
+                Log.d(TAG, "onFailure: " + e.toString());
             }
         });
 
