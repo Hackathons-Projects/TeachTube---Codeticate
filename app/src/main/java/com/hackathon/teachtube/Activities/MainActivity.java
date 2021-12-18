@@ -8,6 +8,7 @@ import com.hackathon.teachtube.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
