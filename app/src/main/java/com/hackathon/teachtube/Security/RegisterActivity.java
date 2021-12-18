@@ -102,8 +102,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String mContactPerson = et_contact_person.getText().toString().trim();
                 //String mCACode = et_CaCode.getText().toString().trim();
 
-                String gstNoRegex = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$";
-
                 int check = 0;
 
                 ((TextInputLayout) et_mobileNo.getParent().getParent()).setErrorEnabled(false);
@@ -169,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
         data.put(Constants.USER_EMAIL, email);
         data.put(Constants.USER_MOBILE_NO, encryptedData);
 
-        firebaseDatabase.getReference().child("Users").child(encryptedData).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance(Constants.FIREBASE_REFERENCE).getReference().child("Users").child(encryptedData).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -301,8 +299,8 @@ public class RegisterActivity extends AppCompatActivity {
         );
         requestQueue.add(stringRequest);*/
 
-        String decryptedData = AuthEncrypter.Encrypt(phone_no);
-        firebaseDatabase.getReference().child("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        String decryptedData = AuthEncrypter.Encrypt(phone_no).trim();
+        FirebaseDatabase.getInstance(Constants.FIREBASE_REFERENCE).getReference().child("Users").child(decryptedData).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
