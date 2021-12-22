@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootView"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:scaleType="center"
+            app:titleTextAppearance="@style/MainToolbarTextAppearance"
+            app:title="Add Notes"
+            app:menu="@menu/save_menu"
+            app:titleTextColor="@color/white"
+            android:background="@color/colorSecondary"
+            app:navigationIcon="@drawable/back"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:theme="@style/TextInputLayoutAppearance"
+            app:hintTextColor="@color/textColorLight"
+            android:textColorHint="@color/textColorLight">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_title"
+                style="@style/FontRegular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Title*"
+                android:inputType="text"
+                android:textColor="@color/textColorMedium"
+                android:textColorHint="@color/textColorLight"
+                android:textSize="@dimen/textSize_small" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:textColor="@color/textColorLight"
+            android:textSize="@dimen/_11ssp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lightGray"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <Spinner
+                android:id="@+id/spinner_subject"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topic"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:textColor="@color/textColorLight"
+            android:textSize="@dimen/_11ssp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lightGray"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <Spinner
+                android:id="@+id/spinner_topic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/FontRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chapter"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:textColor="@color/textColorLight"
+            android:textSize="@dimen/_11ssp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lightGray"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <Spinner
+                android:id="@+id/spinner_chapter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/upload_document"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/lightGray"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/_7sdp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_uploadFileName"
+                    style="@style/FontRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Upload File*"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:textColor="@color/textColorMedium"
+                    android:textSize="@dimen/textSize_small" />
+
+                <ImageButton
+                    android:id="@+id/uploadFile_icon"
+                    android:layout_width="@dimen/_36sdp"
+                    android:layout_height="@dimen/_36sdp"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/download"
+                    android:rotation="180"
+                    android:tint="@color/textColorMediumDark" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <include layout="@layout/loader_layout" />
+
+    <include
+        layout="@layout/something_went_wrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
+
+</RelativeLayout>

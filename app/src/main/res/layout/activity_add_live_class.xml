@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorSecondary"
+            android:scaleType="center"
+            app:menu="@menu/save_menu"
+            app:navigationIcon="@drawable/back"
+            app:title="Add Live Class"
+            app:titleTextAppearance="@style/MainToolbarTextAppearance"
+            app:titleTextColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FontRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Platform*"
+                    android:textColor="@color/textColorLight"
+                    android:textSize="@dimen/textSize_small" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup_platform"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center|start"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/rb_cisco"
+                        style="@style/FontMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cisco Webex"
+                        android:textColor="@color/textColorMedium"
+                        android:textSize="@dimen/textSize_small"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/rb_zoom"
+                        style="@style/FontMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zoom"
+                        android:textColor="@color/textColorMedium"
+                        android:layout_marginStart="@dimen/_7sdp"
+                        android:textSize="@dimen/textSize_small" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:textColorHint="@color/textColorLight"
+                android:theme="@style/TextInputLayoutAppearance"
+                app:hintTextColor="@color/textColorLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_title"
+                    style="@style/FontRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Title*"
+                    android:inputType="text"
+                    android:textColor="@color/textColorMedium"
+                    android:textColorHint="@color/textColorLight"
+                    android:textSize="@dimen/textSize_small" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:textColorHint="@color/textColorLight"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:hintTextColor="@color/textColorLight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_meetingURL"
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Meeting URL*"
+                        android:textColor="@color/textColorMedium"
+                        android:textColorHint="@color/textColorLight"
+                        android:textSize="@dimen/textSize_small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:textColorHint="@color/textColorLight"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:hintTextColor="@color/textColorLight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_meetingId"
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Meeting ID*"
+                        android:inputType="textUri"
+                        android:textColor="@color/textColorMedium"
+                        android:textColorHint="@color/textColorLight"
+                        android:textSize="@dimen/textSize_small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:textColorHint="@color/textColorLight"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:hintTextColor="@color/textColorLight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_meetingPassword"
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Meeting Password*"
+                        android:inputType="numberPassword"
+                        android:textColor="@color/textColorMedium"
+                        android:textColorHint="@color/textColorLight"
+                        android:textSize="@dimen/textSize_small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- <TextView
+                 style="@style/FontRegular"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Subject"
+                 android:layout_marginTop="@dimen/_2sdp"
+                 android:layout_marginStart="@dimen/_12sdp"
+                 android:textColor="@color/textColorLight"
+                 android:textSize="@dimen/textSize_littleSmall" />
+     -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:textColorHint="@color/textColorLight"
+                android:theme="@style/TextInputLayoutAppearance"
+                app:hintTextColor="@color/textColorLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_meetingDate"
+                    style="@style/FontRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Meeting Date*"
+                    android:inputType="text"
+                    android:textColor="@color/textColorMedium"
+                    android:textColorHint="@color/textColorLight"
+                    android:textSize="@dimen/textSize_small" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:layout_weight="1"
+                    android:textColorHint="@color/textColorLight"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:hintTextColor="@color/textColorLight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_startTime"
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Start Time*"
+                        android:inputType="text"
+                        android:textColor="@color/textColorMedium"
+                        android:textColorHint="@color/textColorLight"
+                        android:textSize="@dimen/textSize_small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:layout_weight="1"
+                    android:textColorHint="@color/textColorLight"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:hintTextColor="@color/textColorLight">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_endTime"
+                        style="@style/FontRegular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="End Time*"
+                        android:inputType="text"
+                        android:textColor="@color/textColorMedium"
+                        android:textColorHint="@color/textColorLight"
+                        android:textSize="@dimen/textSize_small" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/loader_layout" />
+
+    <include
+        layout="@layout/something_went_wrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_6sdp"
+    android:layout_marginEnd="@dimen/_6sdp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/_81sdp"
+        android:layout_height="@dimen/_64sdp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="0dp">
+
+        <com.google.android.youtube.player.YouTubeThumbnailView
+            android:id="@+id/video_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/lightGray" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/video_title"
+        style="@style/FontMedium"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_7sdp"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingEnd="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:text="Session - 1  Introduction Basic Maths"
+        android:textColor="@color/textColorDark"
+        android:textSize="@dimen/textSize_small" />
+
+    <ImageButton
+        android:id="@+id/ib_more"
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:layout_gravity="center"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_more"
+        android:tint="@color/textColorMediumDark" />
+
+</LinearLayout>

@@ -19,8 +19,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-
 import com.hackathon.teachtube.R;
+import com.shockwave.pdfium.PdfDocument;
+import com.shockwave.pdfium.PdfiumCore;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -74,7 +75,7 @@ public class FileUtils {
         return mimeType != null && mimeType.startsWith("application");
     }
 
-    /*public static String getFilePathFromURI(Context context, Uri contentUri , String type) {
+    public static String getFilePathFromURI(Context context, Uri contentUri , String type) {
         //copy file and send new file path
         type = type.equals("NOTE") ? "Notes" : "Exercise";
         String fileName = getFileName(contentUri);
@@ -94,7 +95,7 @@ public class FileUtils {
             return copyFile.getAbsolutePath();
         }
         return null;
-    }*/
+    }
 
     public static Bitmap getBitmap(File file) {
         Bitmap bitmap=null;
@@ -108,7 +109,7 @@ public class FileUtils {
         return bitmap ;
     }
 
-    /*public static Bitmap getPdfThumbnail(Context context , Uri uri)
+    public static Bitmap getPdfThumbnail(Context context , Uri uri)
     {
         Bitmap bitmap;
 
@@ -132,7 +133,7 @@ public class FileUtils {
             e.printStackTrace();
             return null;
         }
-    }*/
+    }
 
     public static void copy(Context context, Uri srcUri, File dstFile) {
         try {

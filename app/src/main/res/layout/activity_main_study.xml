@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OtherActivities.Study.MainStudyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorSecondary"
+            android:scaleType="center"
+            android:visibility="visible"
+            app:title="Magazine"
+            app:titleTextAppearance="@style/MainToolbarTextAppearance"
+            app:titleTextColor="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="@dimen/_7sdp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/back"
+                    app:tint="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/changeSubjectTopicChapter"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/RL1"
+                            android:layout_width="@dimen/_34sdp"
+                            android:layout_height="@dimen/_34sdp"
+                            android:layout_gravity="center_vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circle_border" />
+
+                            <TextView
+                                android:id="@+id/currentSubject_image"
+                                style="@style/FontMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:text="Sc"
+                                android:textColor="@color/lightGrayBackground"
+                                android:textSize="@dimen/textSize_medium" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:gravity="center|start"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/currentSubject_title"
+                                style="@style/FontMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="start|center"
+                                android:maxLines="1"
+                                android:text="Practical Science"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/currentSubject_class"
+                                    style="@style/FontMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:gravity="start|center"
+                                    android:maxLines="1"
+                                    android:text="Xth"
+                                    android:textColor="@color/lightGray"
+                                    android:textSize="@dimen/_11ssp" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_16sdp"
+                                    android:layout_height="@dimen/_16sdp"
+                                    android:layout_marginBottom="@dimen/_minus2sdp"
+                                    android:src="@drawable/ic_down"
+                                    app:tint="@color/white" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_weight="0"
+                        android:paddingStart="@dimen/_24sdp"
+                        android:paddingEnd="@dimen/_5sdp">
+
+                        <View
+                            android:id="@+id/indicator"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/tab_layout_custom_indicator" />
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab_mainStudy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="?attr/actionBarSize"
+                            android:background="@android:color/transparent"
+                            app:tabGravity="fill"
+                            app:tabIconTint="@color/lecture_toolbar_tabs_color_tint"
+                            app:tabIndicatorColor="@null"
+                            app:tabMode="fixed"
+                            app:tabRippleColor="@color/white"
+                            app:tabTextAppearance="@style/TabTextAppearance" />
+
+                    </RelativeLayout>
+
+                    <!--<com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/textColorDark"
+                        app:cardCornerRadius="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_7sdp"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="1dp">
+
+                        <TextView
+                            style="@style/FontMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_1sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_1sdp"
+                            android:gravity="center"
+                            android:text="Live"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11ssp" />
+
+                    </com.google.android.material.card.MaterialCardView>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:gravity="center"
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                app:strokeColor="@color/outlineGreyColor"
+                app:strokeWidth="1dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                app:strokeColor="@color/outlineGreyColor"
+                app:strokeWidth="1dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_3sdp"
+                app:strokeColor="@color/textColorDark"
+                app:strokeWidth="1dp"
+                >
+
+                <TextView
+                    style="@style/FontMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:gravity="center"
+                    android:text="Search"
+                    android:textColor="@color/textColorDark"
+                    android:textSize="@dimen/_11ssp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>-->
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager_mainStudy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <include layout="@layout/loader_layout" />
+
+    <include
+        layout="@layout/not_found_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
+
+    <include
+        layout="@layout/something_went_wrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
+
+</RelativeLayout>

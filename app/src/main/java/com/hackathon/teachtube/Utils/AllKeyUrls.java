@@ -16,4 +16,28 @@ public class AllKeyUrls
 
     public static final String FIREBASE_URL = "https://human-helper-313815-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
+    public static String UPLOAD_DOCUMENT_PATH;
+
+    public static String getUploadNoteDocumentPath(String name)
+    {
+        UPLOAD_DOCUMENT_PATH = BASE_URL + "/uploads/attachments/studynotes/" + name;
+        return UPLOAD_DOCUMENT_PATH;
+    }
+
+    public static String getUploadExerciseDocumentPath(String name)
+    {
+        UPLOAD_DOCUMENT_PATH = BASE_URL + "/uploads/attachments/studyexercise/" + name;
+        return UPLOAD_DOCUMENT_PATH;
+    }
+
+    public static String getMeetingUrl(String id , String pwd)
+    {
+        return "https://us05web.zoom.us/j/"+id+"?pwd="+pwd;
+    }
+    public static String getYoutubeUrl(String id)
+    {
+        return "https://www.youtu.be/" + id;
+    }
+
+
 }

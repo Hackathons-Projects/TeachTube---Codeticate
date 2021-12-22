@@ -3,14 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/drawable/circle_border.xml" value="0.236986301369863" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/drawable/ic_feedback.xml" value="0.236986301369863" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/drawable/ic_round_play_arrow_24.xml" value="0.24444444444444444" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/drawable/ic_save.xml" value="0.1" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/drawable/ic_teachtube_logos.xml" value="0.2703125" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_add_exercise.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_info.xml" value="0.22592592592592592" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_live_class.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_main_study.xml" value="0.25416666666666665" />
         <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_select_subject.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/custom_subject_item.xml" value="0.6" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/customised_toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/fragment_exercise.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/live_class_items.xml" value="0.2" />
         <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/main_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/navigation_main_header_layout.xml" value="0.22592592592592592" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/not_found_layout.xml" value="0.22592592592592592" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/layout/study_video_items.xml" value="0.25416666666666665" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/menu/main_nav_menu.xml" value="0.22592592592592592" />
+        <entry key="..\:/Projects/TeachTube---Codeticate-master/app/src/main/res/menu/save_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

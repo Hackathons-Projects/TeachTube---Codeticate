@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.hackathon.teachtube.R;
+import com.hackathon.teachtube.Utils.ImpMethods;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -217,7 +218,7 @@ public class MobileVerification
                     public void onFailure(@NonNull Exception e) {
                         Log.d(TAG, "onFailure: " + e.toString());
                         onMobileVerificationFinished.MobileVerificationFinished(OTP_VERIFICATION_FAILURE , FAILED , mMobileNo);
-                        Snackbar.make(view.findViewById(R.id.rootView), "Network Problem !!\nPlease try again later", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(ImpMethods.getViewFromContext(context), "Network Problem !!\nPlease try again later", Snackbar.LENGTH_SHORT).show();
                     }
                 });
     }

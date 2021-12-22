@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.hackathon.teachtube.R;
 import com.hackathon.teachtube.Utils.AuthEncrypter;
 import com.hackathon.teachtube.Utils.Constants;
 import com.hackathon.teachtube.Utils.ImpMethods;
+import com.hackathon.teachtube.Utils.TinyDB;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
 import org.json.JSONException;
@@ -39,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
     private Context context;
     private static final String TAG = "LoginActivity";
 
-    private TextView et_phone_no, register_link;
+    private TinyDB tinyDB;
+    private TextView register_link;
+    private EditText et_phone_no;
     private MaterialCardView btn_submit_login;
 
     private CountryCodePicker ccp;
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = LoginActivity.this;
+        tinyDB = new TinyDB(context);
 
         mobileVerification = new MobileVerification(context, ImpMethods.getViewFromContext(context));
 
@@ -115,10 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //previousSuccessfulNo = mobileNo;
                                 Log.d(TAG, "MobileVerificationFinished: " + mobileNo);
                                 if (success) {
-                                    ((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(false);
-
-                                    ((TextInputLayout) et_phone_no.getParent().getParent()).setEndIconDrawable(R.drawable.correct);
-                                    ((TextInputLayout) et_phone_no.getParent().getParent()).setEndIconVisible(true);
+                                    tinyDB.putInt(Constants.LOGIN_FLAG , 1);
 
                                     Intent intent = new Intent(context, MainActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -136,21 +138,24 @@ public class LoginActivity extends AppCompatActivity {
                                     //otpVerifiedFlag = 0;
                                     switch (errorCode) {
                                         case MobileVerification.OTP_DIALOG_CLOSED:
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setError("Verification Required");
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setError("Verification Required");
+                                            Toast.makeText(context, "Verification Required", Toast.LENGTH_SHORT).show();
                                             break;
                                         case MobileVerification.OTP_SENT_LIMIT_END:
                                             //tooManyRequestFlag = 1;
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setError("Too Many Failed Attempts.\nTry again Later!");
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setError("Too Many Failed Attempts.\nTry again Later!");
                                             //btn_verify_mobile.setEnabled(false);
+                                            Toast.makeText(context, "Too Many Failed Attempts.\\nTry again Later!", Toast.LENGTH_SHORT).show();
                                             break;
                                         case MobileVerification.OTP_VERIFICATION_FAILED:
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setEndIconActivated(false);
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setEndIconActivated(false);
                                             break;
                                         case MobileVerification.INVALID_MOBILE_NO:
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
-                                            ((TextInputLayout) et_phone_no.getParent().getParent()).setError("Invalid Mobile No.");
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setErrorEnabled(true);
+                                            //((TextInputLayout) et_phone_no.getParent().getParent()).setError("Invalid Mobile No.");
+                                            Toast.makeText(context, "Invalid Mobile No.", Toast.LENGTH_SHORT).show();
                                             break;
                                         case MobileVerification.OTP_VERIFICATION_FAILURE:
                                             break;
